@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  selector:
+    matchLabels:
+      run: my-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: registry.digitalocean.com/microservices-demo-daav/my-python-app:latest
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
